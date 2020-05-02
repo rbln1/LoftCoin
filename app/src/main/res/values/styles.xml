@@ -1,11 +1,106 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/dark_six</item>
+        <item name="colorPrimaryDark">@color/dark</item>
+        <item name="colorSecondary">@color/grey_blue</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="buttonWelcome">@style/Widget.AppTheme.Button.Welcome</item>
+        <item name="textAppearanceHeadline1">@style/TextAppearance.AppTheme.H1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.AppTheme.H2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.AppTheme.H3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.AppTheme.H4</item>
     </style>
+
+    <style name="Widget.AppTheme.Button.Welcome" parent="Widget.MaterialComponents.TextView">
+        <item name="android:background">@drawable/btn_welcome</item>
+        <item name="android:textAppearance">?attr/textAppearanceButton</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">64dp</item>
+        <item name="android:paddingEnd">64dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="TextAppearance.AppTheme" parent="TextAppearance.MaterialComponents.Body1"/>
+
+    <style name="TextAppearance.AppTheme.Hero">
+        <item name="android:textSize">64sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TextAppearance.AppTheme.SplashTitle">
+        <item name="android:textSize">48sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">#0000</item>
+    </style>
+    <style name="TextAppearance.AppTheme.H1">
+        <item name="android:textSize">36sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TextAppearance.AppTheme.H2">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TextAppearance.AppTheme.H3">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TextAppearance.AppTheme.H4">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TextAppearance.AppTheme.H4.Secondary">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/grey_blue</item>
+    </style>
+    <style name="TextAppearance.AppTheme.Successfully">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+        <item name="android:textColor">@color/weird_green</item>
+    </style>
+    <style name="TextAppearance.AppTheme.Error">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+        <item name="android:textColor">@color/watermelon</item>
+    </style>
+    <style name="TextAppearance.AppTheme.Link">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.07</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+        <item name="android:textColor">@color/lemon_yellow</item>
+    </style>
+    <style name="TextAppearance.AppTheme.Text">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">9sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <attr name="buttonWelcome" format="reference" />
 
 </resources>
