@@ -1,18 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:ignore="Autofill">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="Converter Fragment" />
+        android:background="@color/dark_five"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
+        <EditText
+            android:id="@+id/fragment_converter_start_currency_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/zero_of_currency"
+            android:inputType="numberDecimal"
+            android:padding="28dp"
+            android:paddingStart="20dp"
+            android:textAppearance="?attr/textAppearanceHeadline2"
+            tools:text="1.23" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/fragment_converter_start_currency_image"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="15dp"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/fragment_converter_start_currency_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:minEms="4"
+            android:textAppearance="?attr/textAppearanceHeadline4"
+            tools:text="BTC" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@color/dark_five"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/fragment_converter_end_currency_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/zero_of_currency"
+            android:inputType="numberDecimal"
+            android:padding="28dp"
+            android:paddingStart="20dp"
+            android:textAppearance="?attr/textAppearanceHeadline2"
+            tools:text="1.23" />
+
+        <ImageView
+            android:id="@+id/fragment_converter_end_currency_image"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="15dp"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/fragment_converter_end_currency_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:minEms="4"
+            android:textAppearance="?attr/textAppearanceHeadline4"
+            tools:text="ETH" />
+
+    </LinearLayout>
+
+</LinearLayout>

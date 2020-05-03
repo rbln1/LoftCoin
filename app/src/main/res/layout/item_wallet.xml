@@ -7,27 +7,27 @@
     android:background="@drawable/bg_wallet_card">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/item_wallet_guideline_top"
+        android:id="@+id/item_wallet_guideline_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/item_wallet_guideline_left"
+        android:id="@+id/item_wallet_guideline_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <ImageView
         android:id="@+id/item_wallet_bottom_left_art"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/image_splash_two"
-        app:layout_constraintEnd_toStartOf="@+id/item_wallet_guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/item_wallet_guideline_top"
-        tools:ignore="ContentDescription" />
+        android:rotation="-70"
+        app:layout_constraintEnd_toStartOf="@+id/item_wallet_guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/item_wallet_guideline_horizontal" />
 
     <ImageView
         android:id="@+id/item_wallet_image"
@@ -70,9 +70,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:textAppearance="?attr/textAppearanceHeadline4"
-        android:textColor="@color/grey_blue"
-        android:textSize="12sp"
+        android:textAppearance="@style/TextAppearance.AppTheme.H4.Secondary"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="123 $" />

@@ -13,5 +13,6 @@
     <string name="wallets">Кошельки</string>
     <string name="rates">Курс</string>
     <string name="converter">Конвертер</string>
+    <string name="zero_of_currency">0.00</string>
 
 </resources>
