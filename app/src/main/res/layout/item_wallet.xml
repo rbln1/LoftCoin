@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="?attr/walletCardWidth"
+    android:layout_height="?attr/walletCardHeight"
+    android:background="@drawable/bg_wallet_card">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/item_wallet_guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/item_wallet_guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <ImageView
+        android:id="@+id/item_wallet_bottom_left_art"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/image_splash_two"
+        app:layout_constraintEnd_toStartOf="@+id/item_wallet_guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/item_wallet_guideline_top"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/item_wallet_image"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/blue_grey"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/item_wallet_symbol"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textAppearance="?attr/textAppearanceHeadline4"
+        app:layout_constraintBottom_toBottomOf="@+id/item_wallet_image"
+        app:layout_constraintStart_toEndOf="@+id/item_wallet_image"
+        app:layout_constraintTop_toTopOf="@+id/item_wallet_image"
+        tools:text="BTC" />
+
+    <TextView
+        android:id="@+id/item_wallet_balance1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:textAppearance="?attr/textAppearanceHeadline3"
+        app:layout_constraintBottom_toTopOf="@+id/item_wallet_balance2"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="123 BTC" />
+
+    <TextView
+        android:id="@+id/item_wallet_balance2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:textAppearance="?attr/textAppearanceHeadline4"
+        android:textColor="@color/grey_blue"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="123 $" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

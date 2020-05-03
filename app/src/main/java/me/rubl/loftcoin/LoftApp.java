@@ -13,6 +13,5 @@ public class LoftApp extends Application {
         if (BuildConfig.DEBUG) {
             StrictMode.enableDefaults();
         }
-
     }
 }

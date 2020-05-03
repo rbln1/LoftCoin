@@ -20,14 +20,12 @@ public class SplashActivity extends AppCompatActivity {
 
     private Runnable goNextScreen;
 
-    private SharedPreferences preferences;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         if (preferences.getBoolean(WelcomeActivity.KEY_SHOW_WELCOME, true)){
             goNextScreen = () -> startActivity(new Intent(this, WelcomeActivity.class));

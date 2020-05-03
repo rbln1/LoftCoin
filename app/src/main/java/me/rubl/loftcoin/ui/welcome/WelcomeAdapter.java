@@ -14,9 +14,9 @@ import me.rubl.loftcoin.databinding.ItemWelcomeBinding;
 public class WelcomeAdapter extends RecyclerView.Adapter<WelcomeAdapter.ViewHolder> {
 
     private static final int[] IMAGES = {
-        R.drawable.welcome_image_one,
-        R.drawable.welcome_image_two,
-        R.drawable.welcome_image_three
+        R.drawable.image_welcome_one,
+        R.drawable.image_welcome_two,
+        R.drawable.image_welcome_three
     };
     private static final int[] TITLES = {
         R.string.activity_welcome_title_one,
