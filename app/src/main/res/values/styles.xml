@@ -4,6 +4,10 @@
     <attr name="walletCardBackground" format="color|reference" />
     <attr name="walletCardWidth" format="dimension|reference" />
     <attr name="walletCardHeight" format="dimension|reference" />
+    <attr name="textPositive" format="color|reference" />
+    <attr name="textNegative" format="color|reference" />
+    <attr name="evenLineBackground" format="color|reference" />
+    <attr name="oddLineBackground" format="color|reference" />
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
@@ -24,11 +28,16 @@
         <item name="actionBarPopupTheme">@style/AppTheme.PopupOverlay</item>
 
         <item name="bottomNavigationStyle">@style/AppTheme.BottomNavigationView </item>
+        <item name="materialAlertDialogTheme">@style/AppTheme.AlertDialog</item>
 
         <item name="buttonWelcome">@style/Widget.AppTheme.Button.Welcome</item>
         <item name="walletCardBackground">@color/dark_five</item>
         <item name="walletCardWidth">240dp</item>
         <item name="walletCardHeight">160dp</item>
+        <item name="textPositive">@color/weird_green</item>
+        <item name="textNegative">@color/watermelon</item>
+        <item name="evenLineBackground">@color/dark_three</item>
+        <item name="oddLineBackground">@color/dark_two</item>
     </style>
     
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
@@ -41,6 +50,10 @@
         <item name="android:background">?attr/colorPrimaryVariant</item>
         <item name="itemIconTint">@color/bottom_nav_item</item>
         <item name="itemTextColor">@color/bottom_nav_item</item>
+    </style>
+
+    <style name="AppTheme.AlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorSurface">@color/dark_four</item>
     </style>
 
     <style name="Widget.AppTheme.Button.Welcome" parent="Widget.MaterialComponents.TextView">

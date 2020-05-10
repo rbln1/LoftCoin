@@ -4,6 +4,9 @@ import android.app.Application;
 import android.os.Build;
 import android.os.StrictMode;
 
+import me.rubl.loftcoin.util.DebugTree;
+import timber.log.Timber;
+
 public class LoftApp extends Application {
 
     @Override
@@ -12,6 +15,7 @@ public class LoftApp extends Application {
 
         if (BuildConfig.DEBUG) {
             StrictMode.enableDefaults();
+            Timber.plant(new DebugTree());
         }
     }
 }

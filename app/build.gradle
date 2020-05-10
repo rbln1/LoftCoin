@@ -13,6 +13,7 @@ android {
 
         buildConfigField "String", "API_KEY", "\"${pApiKey}\""
         buildConfigField "String", "API_ENDPOINT", "\"https://pro-api.coinmarketcap.com/v1/\""
+        buildConfigField "String", "IMG_ENDPOINT", "\"https://s2.coinmarketcap.com/static/img/coins/128x128/\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,6 +39,8 @@ dependencies {
     implementation 'org.jetbrains:annotations:16.0.1'
 
     implementation 'com.google.android.material:material:1.1.0'
+    compileOnly 'com.google.auto.value:auto-value-annotations:1.7'
+    annotationProcessor 'com.google.auto.value:auto-value:1.7'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
@@ -46,7 +49,21 @@ dependencies {
     implementation 'androidx.fragment:fragment:1.2.4'
     implementation 'androidx.navigation:navigation-fragment:2.2.2'
     implementation 'androidx.navigation:navigation-ui:2.2.2'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.2.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-rc01'
 
     // Logging
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    implementation 'com.squareup.moshi:moshi:1.9.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.8.1'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+
 }

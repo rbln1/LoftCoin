@@ -11,7 +11,7 @@
         android:layout_width="?attr/walletCardWidth"
         android:layout_height="?attr/walletCardHeight"
         android:background="@drawable/bg_wallet_card"
-        android:padding="56dp"
+        android:padding="@dimen/indent_56dp"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_add_24dp"
         android:tint="@color/slate"
@@ -22,7 +22,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_wallets_recycler"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero_dp"
         android:layout_height="wrap_content"
         android:visibility="gone"
         tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -42,8 +42,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_wallets_transactions"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="@dimen/zero_dp"
         tools:listitem="@layout/item_transaction"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

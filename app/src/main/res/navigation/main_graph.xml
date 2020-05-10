@@ -20,5 +20,10 @@
         android:name="me.rubl.loftcoin.ui.converter.ConverterFragment"
         android:label="@string/converter"
         tools:layout="@layout/fragment_converter" />
+    <dialog
+        android:id="@+id/currency_dialog"
+        android:name="me.rubl.loftcoin.ui.currency.CurrencyDialog"
+        android:label="CurrencyDialog"
+        tools:layout="@layout/dialog_currency"/>
 
 </navigation>

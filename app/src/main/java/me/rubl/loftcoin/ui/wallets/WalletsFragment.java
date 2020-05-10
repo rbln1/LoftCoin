@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import me.rubl.loftcoin.R;
 import me.rubl.loftcoin.databinding.FragmentWalletsBinding;
+import me.rubl.loftcoin.databinding.FragmentWalletsBinding;
 
 public class WalletsFragment extends Fragment {
 

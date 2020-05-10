@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp"
+    android:padding="@dimen/indent_24dp"
     tools:ignore="Autofill">
 
     <LinearLayout
@@ -16,23 +16,23 @@
 
         <EditText
             android:id="@+id/fragment_converter_start_currency_value"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@null"
             android:hint="@string/zero_of_currency"
             android:inputType="numberDecimal"
-            android:padding="28dp"
-            android:paddingStart="20dp"
+            android:padding="@dimen/indent_28dp"
+            android:paddingStart="@dimen/indent_20dp"
             android:textAppearance="?attr/textAppearanceHeadline2"
             tools:text="1.23" />
 
         <ImageView
             android:id="@+id/fragment_converter_start_currency_image"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="@dimen/currency_image_size"
+            android:layout_height="@dimen/currency_image_size"
             android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="@dimen/indent_15dp"
             android:scaleType="centerCrop"
             tools:src="@tools:sample/avatars" />
 
@@ -50,7 +50,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/indent_24dp"
         android:background="@color/dark_five"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -63,17 +63,17 @@
             android:background="@null"
             android:hint="@string/zero_of_currency"
             android:inputType="numberDecimal"
-            android:padding="28dp"
-            android:paddingStart="20dp"
+            android:padding="@dimen/indent_28dp"
+            android:paddingStart="@dimen/indent_20dp"
             android:textAppearance="?attr/textAppearanceHeadline2"
             tools:text="1.23" />
 
         <ImageView
             android:id="@+id/fragment_converter_end_currency_image"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="@dimen/currency_image_size"
+            android:layout_height="@dimen/currency_image_size"
             android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="@dimen/indent_15dp"
             android:scaleType="centerCrop"
             tools:src="@tools:sample/avatars" />
 
