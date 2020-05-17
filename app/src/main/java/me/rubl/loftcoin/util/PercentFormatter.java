@@ -1,13 +1,18 @@
 package me.rubl.loftcoin.util;
 
-import android.os.Build;
-
 import androidx.annotation.NonNull;
 
 import java.util.Locale;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public class PercentFormatter implements Formatter<Double> {
 
+    @Inject
+    PercentFormatter() {
+    }
 
     @NonNull
     @Override

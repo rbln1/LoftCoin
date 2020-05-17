@@ -1,48 +1,19 @@
 package me.rubl.loftcoin.data;
 
-import com.google.auto.value.AutoValue;
-import com.google.auto.value.extension.memoized.Memoized;
-import com.squareup.moshi.Json;
+public interface Coin {
 
-import java.util.Iterator;
-import java.util.Map;
+    int id();
 
-@AutoValue
-public abstract class Coin {
+    String name();
 
-    public abstract int id();
+    String symbol();
 
-    public abstract String name();
+    int rank();
 
-    public abstract String symbol();
+    double price();
 
-    @Memoized
-    public double price() {
-        final Iterator<? extends Quote> iterator = quote().values().iterator();
-        if (iterator.hasNext()) return iterator.next().price();
-        return 0d;
-    }
+    double change24h();
 
-    @Memoized
-    public double change24h() {
-        final Iterator<? extends Quote> iterator = quote().values().iterator();
-        if (iterator.hasNext()) return iterator.next().change24h();
-        return 0d;
-    }
+    String currencyCode();
 
-    @Json(name = "cmc_rank")
-    @AutoValue.CopyAnnotations
-    public abstract int rank();
-
-    abstract Map<String, AutoValue_Coin_Quote> quote();
-
-    @AutoValue
-    abstract static class Quote {
-
-        public abstract double price();
-
-        @Json(name = "percent_change_24h")
-        @AutoValue.CopyAnnotations
-        public abstract double change24h();
-    }
 }

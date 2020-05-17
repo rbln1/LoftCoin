@@ -2,34 +2,28 @@ package me.rubl.loftcoin.ui.rates;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Outline;
-import android.os.Build;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewOutlineProvider;
 
 import androidx.annotation.NonNull;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
-import java.text.NumberFormat;
-import java.util.Locale;
+import java.util.List;
 import java.util.Objects;
+
+import javax.inject.Inject;
 
 import me.rubl.loftcoin.BuildConfig;
 import me.rubl.loftcoin.R;
 import me.rubl.loftcoin.data.Coin;
 import me.rubl.loftcoin.databinding.ItemRateBinding;
 import me.rubl.loftcoin.util.CircleViewOutlineProvider;
-import me.rubl.loftcoin.util.Formatter;
 import me.rubl.loftcoin.util.ImageLoader;
-import me.rubl.loftcoin.util.PicassoImageLoader;
+import me.rubl.loftcoin.util.PercentFormatter;
+import me.rubl.loftcoin.util.PriceFormatter;
 
 public class RatesAdapter extends ListAdapter<Coin, RatesAdapter.ViewHolder> {
 
@@ -38,11 +32,12 @@ public class RatesAdapter extends ListAdapter<Coin, RatesAdapter.ViewHolder> {
     private int colorNegative = Color.RED;
     private int colorEvenLine = Color.DKGRAY;
     private int colorOddLine = Color.GRAY;
-    private Formatter<Double> priceFormatter;
-    private Formatter<Double> percentFormatter;
+    private PriceFormatter priceFormatter;
+    private PercentFormatter percentFormatter;
     private ImageLoader imageLoader;
 
-    protected RatesAdapter(Formatter<Double> priceFormatter, Formatter<Double> percentFormatter, ImageLoader imageLoader) {
+    @Inject
+    RatesAdapter(PriceFormatter priceFormatter, PercentFormatter percentFormatter, ImageLoader imageLoader) {
         super(new DiffUtil.ItemCallback<Coin>() {
 
             @Override
@@ -53,6 +48,11 @@ public class RatesAdapter extends ListAdapter<Coin, RatesAdapter.ViewHolder> {
             @Override
             public boolean areContentsTheSame(@NonNull Coin oldItem, @NonNull Coin newItem) {
                 return Objects.equals(oldItem, newItem);
+            }
+
+            @Override
+            public Object getChangePayload(@NonNull Coin oldItem, @NonNull Coin newItem) {
+                return newItem ;
             }
         });
         this.priceFormatter = priceFormatter;
@@ -67,11 +67,23 @@ public class RatesAdapter extends ListAdapter<Coin, RatesAdapter.ViewHolder> {
     }
 
     @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull List<Object> payloads) {
+
+        if (payloads.isEmpty()) {
+             onBindViewHolder(holder, position);
+        } else {
+            Coin coin = (Coin) payloads.get(0);
+            holder.binding.itemRatePrice.setText(priceFormatter.format(coin.currencyCode(), coin.price()));
+            holder.binding.itemRateChange.setText(percentFormatter.format(coin.change24h()));
+        }
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull RatesAdapter.ViewHolder holder, int position) {
         final Coin coin = getItem(position);
 
         holder.binding.itemRateSymbol.setText(coin.symbol());
-        holder.binding.itemRatePrice.setText(priceFormatter.format(coin.price()));
+        holder.binding.itemRatePrice.setText(priceFormatter.format(coin.currencyCode(), coin.price()));
         holder.binding.itemRateChange.setText(percentFormatter.format(coin.change24h()));
 
         if (coin.change24h() > 0) holder.binding.itemRateChange.setTextColor(colorPositive);
@@ -80,7 +92,8 @@ public class RatesAdapter extends ListAdapter<Coin, RatesAdapter.ViewHolder> {
         if (position % 2 == 0) holder.binding.getRoot().setBackgroundColor(colorOddLine);
         else holder.binding.getRoot().setBackgroundColor(colorEvenLine);
 
-        imageLoader.load(BuildConfig.IMG_ENDPOINT + coin.id() + ".png", holder.binding.itemRateImage);
+        imageLoader.load(BuildConfig.IMG_ENDPOINT + coin.id() + ".png")
+                .into(holder.binding.itemRateImage);
     }
 
     @Override
