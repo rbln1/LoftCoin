@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/indent_48dp" >
+
+    <ImageView
+        android:id="@+id/item_welcome_image"
+        android:layout_width="@dimen/welcome_image_size"
+        android:layout_height="@dimen/welcome_image_size"
+        android:layout_marginBottom="@dimen/indent_20dp"
+        android:src="@drawable/image_welcome_one"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/item_welcome_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.7"/>
+
+    <TextView
+        android:id="@+id/item_welcome_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/indent_8dp"
+        android:textAppearance="?attr/textAppearanceHeadline2"
+        android:textStyle="bold"
+        tools:text="@string/activity_welcome_title_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/item_welcome_subtitle" />
+
+    <TextView
+        android:id="@+id/item_welcome_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/indent_32dp"
+        style="@style/TextAppearance.AppTheme.H4.Secondary"
+        android:lines="3"
+        tools:text="@string/activity_welcome_subtitle_one"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:minHeight="?attr/listPreferredItemHeightSmall"
+    android:paddingStart="@dimen/indent_16dp"
+    android:paddingEnd="@dimen/indent_16dp"
+    android:orientation="horizontal"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/item_currency_symbol"
+        android:layout_width="@dimen/currency_symbol_size"
+        android:layout_height="@dimen/currency_symbol_size"
+        android:gravity="center"
+        android:textAppearance="?attr/textAppearanceHeadline4"
+        tools:text="$"/>
+
+    <TextView
+        android:id="@+id/item_currency_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/indent_16dp"
+        android:gravity="center"
+        android:textAppearance="?attr/textAppearanceHeadline3"
+        tools:text="Dollar | USD" />
+
+</LinearLayout>
