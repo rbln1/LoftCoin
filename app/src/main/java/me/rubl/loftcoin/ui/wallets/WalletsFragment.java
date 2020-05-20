@@ -15,13 +15,17 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import javax.inject.Inject;
+
 import me.rubl.loftcoin.R;
-import me.rubl.loftcoin.databinding.FragmentWalletsBinding;
 import me.rubl.loftcoin.databinding.FragmentWalletsBinding;
 
 public class WalletsFragment extends Fragment {
 
     private SnapHelper walletsSnapHelper;
+
+    @Inject
+    public WalletsFragment() {}
 
     @Nullable
     @Override

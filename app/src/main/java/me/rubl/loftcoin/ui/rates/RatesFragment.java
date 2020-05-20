@@ -14,20 +14,17 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import javax.inject.Inject;
 
+import me.rubl.loftcoin.BaseComponent;
 import me.rubl.loftcoin.R;
-import me.rubl.loftcoin.data.Coin;
-import me.rubl.loftcoin.data.CurrencyRepo;
-import me.rubl.loftcoin.data.CurrencyRepoImpl;
 import me.rubl.loftcoin.databinding.FragmentRatesBinding;
-import me.rubl.loftcoin.util.PercentFormatter;
-import me.rubl.loftcoin.util.PicassoImageLoader;
-import me.rubl.loftcoin.util.PriceFormatter;
-import timber.log.Timber;
 
-public class RatesFragment extends Fragment{
+public class RatesFragment extends Fragment {
+
+    private final RatesComponent component;
 
     private FragmentRatesBinding binding;
 
@@ -35,14 +32,20 @@ public class RatesFragment extends Fragment{
 
     private RatesViewModel viewModel;
 
-    private CurrencyRepo currencyRepo;
+    @Inject
+    RatesFragment(BaseComponent baseComponent) {
+        component = DaggerRatesComponent.builder()
+                .baseComponent(baseComponent)
+                .build();
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = new ViewModelProvider(this).get(RatesViewModel.class);
-        adapter = new RatesAdapter(new PriceFormatter(), new PercentFormatter(), new PicassoImageLoader());
-        currencyRepo = new CurrencyRepoImpl(requireContext());
+        viewModel = new ViewModelProvider(this, component.viewModelFactory())
+                .get(RatesViewModel.class);
+        adapter = component.ratesAdapter();
+        adapter.registerAdapterDataObserver(dataObserver);
     }
 
     @Nullable
@@ -68,19 +71,8 @@ public class RatesFragment extends Fragment{
             viewModel.refresh();
         });
 
-        viewModel.coins().observe(getViewLifecycleOwner(), adapter::submitList );
+        viewModel.coins().observe(getViewLifecycleOwner(), adapter::submitList);
         viewModel.isRefreshing().observe(getViewLifecycleOwner(), binding.fragmentRatesRefresher::setRefreshing);
-
-        currencyRepo.currency().observe(getViewLifecycleOwner(), (currency -> {
-            Timber.d("%s", currency);
-        }));
-    }
-
-    @Override
-    public void onDestroyView() {
-        binding.fragmentRatesRecycler.swapAdapter(null, false);
-
-        super.onDestroyView();
     }
 
     @Override
@@ -97,8 +89,52 @@ public class RatesFragment extends Fragment{
             NavHostFragment.findNavController(this)
                 .navigate(R.id.currency_dialog);
             return true;
+        } else if (item.getItemId() == R.id.sort_dialog) {
+            viewModel.switchSortingOrder();
+
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onDestroyView() {
+        binding.fragmentRatesRecycler.swapAdapter(null, false);
+        adapter.unregisterAdapterDataObserver(dataObserver);
+
+        super.onDestroyView();
+    }
+
+    private RecyclerView.AdapterDataObserver dataObserver = new RecyclerView.AdapterDataObserver() {
+        @Override
+        public void onChanged() {
+            binding.fragmentRatesRecycler.scrollToPosition(0);
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount) {
+            binding.fragmentRatesRecycler.scrollToPosition(0);
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount, @Nullable Object payload) {
+            binding.fragmentRatesRecycler.scrollToPosition(0);
+        }
+
+        @Override
+        public void onItemRangeInserted(int positionStart, int itemCount) {
+            binding.fragmentRatesRecycler.scrollToPosition(0);
+        }
+
+        @Override
+        public void onItemRangeRemoved(int positionStart, int itemCount) {
+            binding.fragmentRatesRecycler.scrollToPosition(0);
+        }
+
+        @Override
+        public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
+            binding.fragmentRatesRecycler.scrollToPosition(0);
+        }
+    };
 }
