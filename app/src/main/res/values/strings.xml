@@ -15,9 +15,8 @@
     <string name="rates">Курс</string>
     <string name="converter">Конвертер</string>
 
-
     <!-- Converter Fragment -->
-    <string name="zero_of_currency">0.00</string>
+    <string name="zero_of_coin">0.00</string>
 
     <!-- Rates Fragment -->
     <string name="choose_currency">Выбор валюты</string>
@@ -28,5 +27,8 @@
     <string name="eur">Евро</string>
     <string name="rub">Рубль</string>
 
+    <string name="default_channel_id" translatable="false">default_channel</string>
+    <string name="default_channel_name">@string/app_name</string>
+    <string name="add">Добавить</string>
 
 </resources>

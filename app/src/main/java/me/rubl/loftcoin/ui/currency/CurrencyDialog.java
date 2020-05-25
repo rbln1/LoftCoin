@@ -17,7 +17,7 @@ import javax.inject.Inject;
 import me.rubl.loftcoin.BaseComponent;
 import me.rubl.loftcoin.R;
 import me.rubl.loftcoin.databinding.DialogCurrencyBinding;
-import me.rubl.loftcoin.util.OnItemClick;
+import me.rubl.loftcoin.widget.OnItemClick;
 
 public class CurrencyDialog extends AppCompatDialogFragment {
 
@@ -34,8 +34,8 @@ public class CurrencyDialog extends AppCompatDialogFragment {
     @Inject
     CurrencyDialog(BaseComponent baseComponent) {
         component = DaggerCurrencyComponent.builder()
-                .baseComponent(baseComponent)
-                .build();
+            .baseComponent(baseComponent)
+            .build();
     }
 
     @Override
@@ -43,8 +43,8 @@ public class CurrencyDialog extends AppCompatDialogFragment {
         super.onCreate(savedInstanceState);
 
         viewModel = new ViewModelProvider(
-                this,
-                component.viewModelFactory()).get(CurrencyViewModel.class
+            this,
+            component.viewModelFactory()).get(CurrencyViewModel.class
         );
         adapter = new CurrencyAdapter();
     }
@@ -54,9 +54,9 @@ public class CurrencyDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         binding = DialogCurrencyBinding.inflate(requireActivity().getLayoutInflater());
         return new MaterialAlertDialogBuilder(requireActivity())
-                .setTitle(R.string.choose_currency)
-                .setView(binding.getRoot())
-                .create();
+            .setTitle(R.string.choose_currency)
+            .setView(binding.getRoot())
+            .create();
     }
 
     @Override
@@ -65,7 +65,7 @@ public class CurrencyDialog extends AppCompatDialogFragment {
         binding.dialogCurrencyRecycler.setLayoutManager(new LinearLayoutManager(requireActivity()));
         binding.dialogCurrencyRecycler.setAdapter(adapter);
         viewModel.allCurrencies().observe(this, adapter::submitList);
-        onItemClick = new OnItemClick(binding.dialogCurrencyRecycler.getContext(), (v) -> {
+        onItemClick = new OnItemClick((v) -> {
             final RecyclerView.ViewHolder viewHolder = binding.dialogCurrencyRecycler.findContainingViewHolder(v);
             if (viewHolder != null) {
                 viewModel.updateCurrency(adapter.getItem(viewHolder.getAdapterPosition()));

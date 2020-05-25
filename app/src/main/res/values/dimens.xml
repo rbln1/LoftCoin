@@ -10,7 +10,7 @@
     <dimen name="indent_24dp">24dp</dimen>
     <dimen name="indent_28dp">28dp</dimen>
     <dimen name="indent_20dp">20dp</dimen>
-    <dimen name="currency_image_size">18dp</dimen>
+    <dimen name="coin_image_size">18dp</dimen>
     <dimen name="indent_15dp">15dp</dimen>
     <dimen name="currency_symbol_size">40dp</dimen>
     <dimen name="rate_image_size">24dp</dimen>

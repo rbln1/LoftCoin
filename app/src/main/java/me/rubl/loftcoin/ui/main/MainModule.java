@@ -7,6 +7,7 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.ClassKey;
 import dagger.multibindings.IntoMap;
+import me.rubl.loftcoin.ui.converter.CoinsSheet;
 import me.rubl.loftcoin.ui.converter.ConverterFragment;
 import me.rubl.loftcoin.ui.currency.CurrencyDialog;
 import me.rubl.loftcoin.ui.rates.RatesFragment;
@@ -38,5 +39,10 @@ abstract class MainModule {
     @IntoMap
     @ClassKey(CurrencyDialog.class)
     abstract Fragment currencyDialog(CurrencyDialog impl);
+
+    @Binds
+    @IntoMap
+    @ClassKey(CoinsSheet.class)
+    abstract Fragment coinsSheet(CoinsSheet impl);
 
 }

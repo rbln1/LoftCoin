@@ -4,14 +4,11 @@ import android.app.Application;
 import android.content.Context;
 import android.net.TrafficStats;
 
-import androidx.annotation.NonNull;
-
 import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.inject.Singleton;
@@ -38,17 +35,13 @@ abstract class AppModule {
         int poolSize = Runtime.getRuntime().availableProcessors() * 2 + 1;
         final AtomicInteger threadIds = new AtomicInteger();
 
-        return Executors.newFixedThreadPool(poolSize, new ThreadFactory() {
-            @Override
-            public Thread newThread(@NonNull Runnable r) {
-
-                final Thread thread = new Thread(r);
-                final int threadId = threadIds.incrementAndGet();
-                thread.setName("io-" + threadId);
-                TrafficStats.setThreadStatsTag(threadId);
-                thread.setPriority(Thread.MIN_PRIORITY);
-                return thread;
-            }
+        return Executors.newFixedThreadPool(poolSize, r -> {
+            final Thread thread = new Thread(r);
+            final int threadId = threadIds.incrementAndGet();
+            thread.setName("io-" + threadId);
+            TrafficStats.setThreadStatsTag(threadId);
+            thread.setPriority(Thread.MIN_PRIORITY);
+            return thread;
         });
     }
 

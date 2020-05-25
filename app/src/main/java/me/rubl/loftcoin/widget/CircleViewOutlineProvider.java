@@ -1,4 +1,4 @@
-package me.rubl.loftcoin.util;
+package me.rubl.loftcoin.widget;
 
 import android.graphics.Outline;
 import android.view.View;

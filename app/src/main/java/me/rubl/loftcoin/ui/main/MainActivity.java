@@ -44,6 +44,6 @@ public class MainActivity extends AppCompatActivity {
         final NavController navController = Navigation.findNavController(this, R.id.activity_main_host);
         NavigationUI.setupWithNavController(binding.activityMainBottomNav, navController);
         NavigationUI.setupWithNavController(binding.activityMainToolbar, navController,
-                new AppBarConfiguration.Builder(binding.activityMainBottomNav.getMenu()).build());
+            new AppBarConfiguration.Builder(binding.activityMainBottomNav.getMenu()).build());
     }
 }
