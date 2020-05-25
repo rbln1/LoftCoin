@@ -20,7 +20,7 @@ import me.rubl.loftcoin.BuildConfig;
 import me.rubl.loftcoin.R;
 import me.rubl.loftcoin.data.Coin;
 import me.rubl.loftcoin.databinding.ItemRateBinding;
-import me.rubl.loftcoin.util.CircleViewOutlineProvider;
+import me.rubl.loftcoin.widget.CircleViewOutlineProvider;
 import me.rubl.loftcoin.util.ImageLoader;
 import me.rubl.loftcoin.util.PercentFormatter;
 import me.rubl.loftcoin.util.PriceFormatter;
@@ -93,7 +93,7 @@ public class RatesAdapter extends ListAdapter<Coin, RatesAdapter.ViewHolder> {
         else holder.binding.getRoot().setBackgroundColor(colorEvenLine);
 
         imageLoader.load(BuildConfig.IMG_ENDPOINT + coin.id() + ".png")
-                .into(holder.binding.itemRateImage);
+            .into(holder.binding.itemRateImage);
     }
 
     @Override
