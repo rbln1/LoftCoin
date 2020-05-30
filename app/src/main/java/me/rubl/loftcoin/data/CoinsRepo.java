@@ -29,15 +29,15 @@ public interface CoinsRepo {
         @NonNull
         public static Builder builder() {
             return new AutoValue_CoinsRepo_Query.Builder()
-                    .forceUpdate(true)
-                    .sortBy(SortBy.RANK);
+                .forceUpdate(true)
+                .sortBy(SortBy.RANK);
         }
 
-        abstract String currency();
+        public abstract String currency();
 
-        abstract boolean forceUpdate();
+        public abstract boolean forceUpdate();
 
-        abstract SortBy sortBy();
+        public abstract SortBy sortBy();
 
         @AutoValue.Builder
         public abstract static class Builder {

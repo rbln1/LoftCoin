@@ -15,7 +15,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import javax.inject.Inject;
 
 import me.rubl.loftcoin.BaseComponent;
-import me.rubl.loftcoin.R;
 import me.rubl.loftcoin.databinding.DialogCurrencyBinding;
 import me.rubl.loftcoin.widget.OnItemClick;
 
@@ -54,7 +53,6 @@ public class CurrencyDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         binding = DialogCurrencyBinding.inflate(requireActivity().getLayoutInflater());
         return new MaterialAlertDialogBuilder(requireActivity())
-            .setTitle(R.string.choose_currency)
             .setView(binding.getRoot())
             .create();
     }

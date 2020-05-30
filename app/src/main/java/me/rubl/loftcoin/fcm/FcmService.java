@@ -31,7 +31,6 @@ public class FcmService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
-//        Timber.d("%s", remoteMessage.getNotification());
 
         final RemoteMessage.Notification notification = remoteMessage.getNotification();
 
@@ -48,6 +47,7 @@ public class FcmService extends FirebaseMessagingService {
 //                "Test message",
 //                MainActivity.class
 //        ).subscribe();
+
     }
 
     @Override

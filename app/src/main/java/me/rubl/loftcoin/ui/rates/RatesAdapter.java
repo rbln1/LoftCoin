@@ -28,12 +28,19 @@ import me.rubl.loftcoin.util.PriceFormatter;
 public class RatesAdapter extends ListAdapter<Coin, RatesAdapter.ViewHolder> {
 
     private LayoutInflater inflater;
+
     private int colorPositive = Color.GREEN;
+
     private int colorNegative = Color.RED;
+
     private int colorEvenLine = Color.DKGRAY;
+
     private int colorOddLine = Color.GRAY;
+
     private PriceFormatter priceFormatter;
+
     private PercentFormatter percentFormatter;
+
     private ImageLoader imageLoader;
 
     @Inject

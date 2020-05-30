@@ -1,7 +1,6 @@
 package me.rubl.loftcoin.ui.currency;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -46,7 +45,7 @@ public class CurrencyAdapter extends ListAdapter<Currency, CurrencyAdapter.ViewH
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Currency currency = getItem(position);
-        holder.binding.itemCurrencyName.setText(currency.name());
+        holder.binding.itemCurrencyName.setText(String.format("%s | %s", currency.name(), currency.code()));
         holder.binding.itemCurrencySymbol.setText(currency.symbol());
     }
 

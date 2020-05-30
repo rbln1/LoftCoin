@@ -79,7 +79,7 @@ class ConverterViewModel extends ViewModel {
             .map(Double::parseDouble)
             .flatMap((value) -> factor.map((f) -> value * f))
             .map(v -> String.format(Locale.US, "%.2f", v))
-            .map((v) -> "0.0".equals(v) ? "" : v)
+            .map((v) -> "0.00".equals(v) ? "" : v)
             .observeOn(schedulers.main());
     }
 

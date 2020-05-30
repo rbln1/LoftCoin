@@ -40,19 +40,19 @@ class NotifierImpl implements Notifier {
         return Completable.fromAction(() -> {
             final String channelId = context.getString(R.string.default_channel_id);
             final Notification notification = new NotificationCompat.Builder(context, channelId)
-                    .setSmallIcon(R.mipmap.ic_launcher)
-                    .setContentTitle(title)
-                    .setContentText(message)
-                    .setAutoCancel(true)
-                    .setContentIntent(PendingIntent.getActivity(
-                            context,
-                            0,
-                            new Intent(context, receiver)
-                                    .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
-                            PendingIntent.FLAG_ONE_SHOT,
-                            Bundle.EMPTY
-                    ))
-                    .build();
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setAutoCancel(true)
+                .setContentIntent(PendingIntent.getActivity(
+                    context,
+                    0,
+                    new Intent(context, receiver)
+                            .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
+                    PendingIntent.FLAG_ONE_SHOT,
+                    Bundle.EMPTY
+                ))
+                .build();
             notificationManager.notify(1, notification);
         })
         .startWith(createDefaultChannel())

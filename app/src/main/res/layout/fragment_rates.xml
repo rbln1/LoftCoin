@@ -9,6 +9,8 @@
         android:id="@+id/fragment_rates_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="24dp"
+        android:clipToPadding="false"
         tools:listitem="@layout/item_rate" />
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
