@@ -18,15 +18,15 @@ public class RecyclerViews {
             final RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
                 @Override
                 public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                    if (RecyclerView.SCROLL_STATE_IDLE == newState) {
-                        final View snapView = snapHelper.findSnapView(recyclerView.getLayoutManager());
-                        if (snapView != null) {
-                            final RecyclerView.ViewHolder holder = recyclerView.findContainingViewHolder(snapView);
-                            if (holder != null) {
-                                emitter.onNext(holder.getAdapterPosition());
-                            }
+                if (RecyclerView.SCROLL_STATE_IDLE == newState) {
+                    final View snapView = snapHelper.findSnapView(recyclerView.getLayoutManager());
+                    if (snapView != null) {
+                        final RecyclerView.ViewHolder holder = recyclerView.findContainingViewHolder(snapView);
+                        if (holder != null) {
+                            emitter.onNext(holder.getAdapterPosition());
                         }
                     }
+                }
                 }
             };
             emitter.setCancellable(() -> recyclerView.removeOnScrollListener(onScrollListener));

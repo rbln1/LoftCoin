@@ -20,7 +20,6 @@ import me.rubl.loftcoin.widget.CircleViewOutlineProvider;
 
 public class CoinSheetAdapter extends ListAdapter<Coin, CoinSheetAdapter.ViewHolder> {
 
-
     private final ImageLoader imageLoader;
     private LayoutInflater inflater;
 
@@ -55,7 +54,7 @@ public class CoinSheetAdapter extends ListAdapter<Coin, CoinSheetAdapter.ViewHol
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Coin coin = getItem(position);
 
-        holder.binding.itemCoinsSheetName.setText(coin.symbol() + " | " + coin.name());
+        holder.binding.itemCoinsSheetName.setText(String.format("%s | %s", coin.name(), coin.symbol()));
         imageLoader.load(BuildConfig.IMG_ENDPOINT + coin.id() + ".png")
                 .into(holder.binding.itemCoinsSheetLogo);
     }

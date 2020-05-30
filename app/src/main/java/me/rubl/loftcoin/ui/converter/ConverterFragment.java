@@ -19,8 +19,11 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 import me.rubl.loftcoin.BaseComponent;
+import me.rubl.loftcoin.BuildConfig;
 import me.rubl.loftcoin.R;
 import me.rubl.loftcoin.databinding.FragmentConverterBinding;
+import me.rubl.loftcoin.util.ImageLoader;
+import me.rubl.loftcoin.widget.CircleViewOutlineProvider;
 
 public class ConverterFragment extends Fragment {
 
@@ -28,23 +31,26 @@ public class ConverterFragment extends Fragment {
 
     private final ConverterComponent component;
 
+    private final ImageLoader imageLoader;
+
     private FragmentConverterBinding binding;
 
     private ConverterViewModel viewModel;
 
     @Inject
-    ConverterFragment(BaseComponent baseComponent) {
+    ConverterFragment(BaseComponent baseComponent, ImageLoader imageLoader) {
 
         component = DaggerConverterComponent.builder()
-                .baseComponent(baseComponent)
-                .build();
+            .baseComponent(baseComponent)
+            .build();
+        this.imageLoader = imageLoader;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(requireParentFragment(), component.viewModelFactory())
-                .get(ConverterViewModel.class);
+            .get(ConverterViewModel.class);
     }
 
     @Nullable
@@ -61,25 +67,36 @@ public class ConverterFragment extends Fragment {
 
         final NavController navController = NavHostFragment.findNavController(this);
 
+        CircleViewOutlineProvider.apply(binding.fragmentConverterStartCoinImage);
+        CircleViewOutlineProvider.apply(binding.fragmentConverterEndCoinImage);
+
         disposable.add(viewModel.topCoins().subscribe());
 
-        disposable.add(RxView.clicks(binding.fragmentConverterStartCoinName).subscribe(v -> {
+        disposable.add(RxView.clicks(binding.fragmentConverterStartCoinSelector).subscribe(v -> {
             final Bundle args = new Bundle();
             args.putInt(CoinsSheet.KEY_MODE, CoinsSheet.MODE_FROM);
             navController.navigate(R.id.coins_sheet, args);
         }));
 
-        disposable.add(RxView.clicks(binding.fragmentConverterEndCoinName).subscribe(v -> {
+        disposable.add(RxView.clicks(binding.fragmentConverterEndCoinSelector).subscribe(v -> {
             final Bundle args = new Bundle();
             args.putInt(CoinsSheet.KEY_MODE, CoinsSheet.MODE_TO);
             navController.navigate(R.id.coins_sheet, args);
         }));
 
         disposable.add(viewModel.startCoin().subscribe(
-                coin -> binding.fragmentConverterStartCoinName.setText(coin.symbol())
+            coin -> {
+                binding.fragmentConverterStartCoinName.setText(coin.symbol());
+                imageLoader.load(BuildConfig.IMG_ENDPOINT + coin.id() + ".png")
+                    .into(binding.fragmentConverterStartCoinImage);
+            }
         ));
         disposable.add(viewModel.endCoin().subscribe(
-                coin -> binding.fragmentConverterEndCoinName.setText(coin.symbol())
+            coin -> {
+                binding.fragmentConverterEndCoinName.setText(coin.symbol());
+                imageLoader.load(BuildConfig.IMG_ENDPOINT + coin.id() + ".png")
+                    .into(binding.fragmentConverterEndCoinImage);
+            }
         ));
 
         disposable.add(RxTextView.textChanges(binding.fragmentConverterStartCoinValue).subscribe(viewModel::startCoinValue));

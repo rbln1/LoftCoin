@@ -75,16 +75,15 @@ public class CoinsSheet extends BottomSheetDialogFragment {
 
         disposable.add(viewModel.topCoins().subscribe(adapter::submitList));
         disposable.add(RecyclerViews.onClick(binding.dialogCurrencyRecycler)
-                .map(position -> adapter.getItem(position))
-                .subscribe(coin -> {
-                    if (MODE_FROM == mode) {
-                        viewModel.startCoin(coin);
-                    } else {
-                        viewModel.endCoin(coin);
-                    }
-                    dismissAllowingStateLoss();
-                }));
-
+            .map(position -> adapter.getItem(position))
+            .subscribe(coin -> {
+                if (MODE_FROM == mode) {
+                    viewModel.startCoin(coin);
+                } else {
+                    viewModel.endCoin(coin);
+                }
+                dismissAllowingStateLoss();
+            }));
     }
 
     @Override

@@ -56,7 +56,7 @@ public class WalletsFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         viewModel = new ViewModelProvider(this, component.viewModelFactory())
-                .get(WalletsViewModel.class);
+            .get(WalletsViewModel.class);
         adapter = component.walletsAdapter();
         transactionsAdapter = component.transactionsAdapter();
     }
@@ -85,6 +85,7 @@ public class WalletsFragment extends Fragment {
         final int padding = (int) (displayMetrics.widthPixels - value.getDimension(displayMetrics)) / 2;
         binding.fragmentWalletsRecycler.setPadding(padding, 0, padding, 0);
         binding.fragmentWalletsRecycler.setClipToPadding(false);
+
         // Add carousel listener
         binding.fragmentWalletsRecycler.setLayoutManager(new LinearLayoutManager(view.getContext(), RecyclerView.HORIZONTAL, false));
         binding.fragmentWalletsRecycler.addOnScrollListener(new CarouselScroller());

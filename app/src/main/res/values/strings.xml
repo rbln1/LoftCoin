@@ -1,5 +1,9 @@
 <resources>
+
+    <!-- Common -->
     <string name="app_name">LoftCoin</string>
+    <string name="add">Добавить</string>
+    <string name="choose_currency">Выбор валюты</string>
 
     <!-- Welcome Activity -->
     <string name="activity_welcome_title_one">Покупка и продажа</string>
@@ -19,8 +23,8 @@
     <string name="zero_of_coin">0.00</string>
 
     <!-- Rates Fragment -->
-    <string name="choose_currency">Выбор валюты</string>
     <string name="menu_rates_sort">Сортировать</string>
+    <string name="general_analysis">Общий анализ</string>
 
     <!-- Currency Dialog -->
     <string name="usd">Доллар</string>
@@ -29,6 +33,5 @@
 
     <string name="default_channel_id" translatable="false">default_channel</string>
     <string name="default_channel_name">@string/app_name</string>
-    <string name="add">Добавить</string>
 
 </resources>

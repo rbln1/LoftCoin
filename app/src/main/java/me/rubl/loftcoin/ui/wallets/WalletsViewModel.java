@@ -27,6 +27,7 @@ class WalletsViewModel extends ViewModel {
     private final Observable<List<Transaction>> transactions;
 
     private final WalletsRepo walletsRepo;
+
     private final CurrencyRepo currencyRepo;
 
     private final RxSchedulers schedulers;
@@ -38,18 +39,18 @@ class WalletsViewModel extends ViewModel {
         this.schedulers = schedulers;
 
         wallets = currencyRepo.currency()
-                .switchMap(walletsRepo::wallets)
-                // cache() = replay() + autoconnect()
-                .replay(1)
-                .autoConnect();
+            .switchMap(walletsRepo::wallets)
+            // cache() = replay() + autoconnect()
+            .replay(1)
+            .autoConnect();
 
         transactions =  wallets
-                .switchMap((wallets) -> walletPosition
-                    .map(wallets::get)
-                )
-                .switchMap(walletsRepo::transactions)
-                .replay(1)
-                .autoConnect();
+            .switchMap((wallets) -> walletPosition
+                .map(wallets::get)
+            )
+            .switchMap(walletsRepo::transactions)
+            .replay(1)
+            .autoConnect();
     }
 
     @NonNull

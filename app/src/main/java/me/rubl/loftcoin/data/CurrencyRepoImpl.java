@@ -30,7 +30,9 @@ class CurrencyRepoImpl implements CurrencyRepo {
 
     @Inject
     CurrencyRepoImpl(@NonNull Context context) {
+
         this.prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
         availableCurrencies.put("USD", Currency.create("$", "USD", context.getString(R.string.usd)));
         availableCurrencies.put("EUR", Currency.create("€", "EUR", context.getString(R.string.eur)));
         availableCurrencies.put("RUB", Currency.create("₽", "RUB", context.getString(R.string.rub)));
@@ -41,6 +43,7 @@ class CurrencyRepoImpl implements CurrencyRepo {
     public LiveData<List<Currency>> availableCurrencies() {
         final MutableLiveData<List<Currency>> liveData = new MutableLiveData<>();
         liveData.setValue(new ArrayList<>(availableCurrencies.values()));
+
         return liveData;
     }
 
@@ -49,7 +52,7 @@ class CurrencyRepoImpl implements CurrencyRepo {
     public Observable<Currency> currency() {
         return Observable.create(emitter -> {
             SharedPreferences.OnSharedPreferenceChangeListener listener = (prefs, key) -> {
-                if (!emitter.isDisposed()) {
+                if (!emitter.isDisposed() && KEY_CURRENCY.equals(key)) {
                     emitter.onNext(availableCurrencies.get(prefs.getString(key, "USD")));
                 }
             };

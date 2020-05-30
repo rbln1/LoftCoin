@@ -18,4 +18,6 @@
     <dimen name="indent_8dp">8dp</dimen>
     <dimen name="indent_48dp">48dp</dimen>
     <dimen name="indent_56dp">56dp</dimen>
+    <dimen name="currency_choose_line_height">56dp</dimen>
+    <dimen name="indent_45dp">45dp</dimen>
 </resources>

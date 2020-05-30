@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/rates"
         android:name="me.rubl.loftcoin.ui.rates.RatesFragment"
-        android:label="@string/rates"
+        android:label="@string/general_analysis"
         tools:layout="@layout/fragment_rates" />
     <fragment
         android:id="@+id/converter"
@@ -23,13 +23,13 @@
     <dialog
         android:id="@+id/currency_dialog"
         android:name="me.rubl.loftcoin.ui.currency.CurrencyDialog"
-        android:label="CurrencyDialog"
+        android:label="@string/choose_currency"
         tools:layout="@layout/dialog_currency"/>
 
     <dialog
         android:id="@+id/coins_sheet"
         android:name="me.rubl.loftcoin.ui.converter.CoinsSheet"
-        android:label="CurrencyDialog"
+        android:label="@string/choose_currency"
         tools:layout="@layout/dialog_currency"/>
 
 </navigation>

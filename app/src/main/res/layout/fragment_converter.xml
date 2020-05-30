@@ -10,7 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/dark_five"
+        android:background="@drawable/bg_converter_et_focused"
+        android:layout_marginBottom="@dimen/indent_24dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -20,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@null"
+            android:duplicateParentState="true"
             android:hint="@string/zero_of_coin"
             android:inputType="numberDecimal"
             android:padding="@dimen/indent_28dp"
@@ -27,31 +29,41 @@
             android:textAppearance="?attr/textAppearanceHeadline2"
             tools:text="1.23" />
 
-        <ImageView
-            android:id="@+id/fragment_converter_start_coin_image"
-            android:layout_width="@dimen/coin_image_size"
-            android:layout_height="@dimen/coin_image_size"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="@dimen/indent_15dp"
-            android:scaleType="centerCrop"
-            tools:src="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/fragment_converter_start_coin_name"
+        <LinearLayout
+            android:id="@+id/fragment_converter_start_coin_selector"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:minEms="4"
-            android:textAppearance="?attr/textAppearanceHeadline4"
-            tools:text="BTC" />
+            android:orientation="horizontal"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/fragment_converter_start_coin_image"
+                android:layout_width="@dimen/coin_image_size"
+                android:layout_height="@dimen/coin_image_size"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="@dimen/indent_15dp"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/fragment_converter_start_coin_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:minEms="4"
+                android:textAppearance="?attr/textAppearanceHeadline4"
+                tools:text="BTC" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/indent_24dp"
-        android:background="@color/dark_five"
+        android:background="@drawable/bg_converter_et_focused"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -68,23 +80,34 @@
             android:textAppearance="?attr/textAppearanceHeadline2"
             tools:text="1.23" />
 
-        <ImageView
-            android:id="@+id/fragment_converter_end_coin_image"
-            android:layout_width="@dimen/coin_image_size"
-            android:layout_height="@dimen/coin_image_size"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="@dimen/indent_15dp"
-            android:scaleType="centerCrop"
-            tools:src="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/fragment_converter_end_coin_name"
+        <LinearLayout
+            android:id="@+id/fragment_converter_end_coin_selector"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:minEms="4"
-            android:textAppearance="?attr/textAppearanceHeadline4"
-            tools:text="ETH" />
+            android:orientation="horizontal"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/fragment_converter_end_coin_image"
+                android:layout_width="@dimen/coin_image_size"
+                android:layout_height="@dimen/coin_image_size"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="@dimen/indent_15dp"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/fragment_converter_end_coin_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:minEms="4"
+                android:textAppearance="?attr/textAppearanceHeadline4"
+                tools:text="ETH" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
